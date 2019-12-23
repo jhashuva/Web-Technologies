@@ -1,0 +1,17 @@
+<html>
+<head>
+<p id="demo"></p>
+<script type="text/javascript">
+var x=" ",i;
+for (i=0;i<10;i++)
+  {
+  if (i==3)
+    {
+    break;
+    }
+  x=x+"The number is " + i + "<br />";
+  }
+  document.getElementById("demo").innerHTML=x;
+</script>
+</head>
+</html>

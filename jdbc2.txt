@@ -1,0 +1,70 @@
+//printing the ressults of employ id
+import static java.lang.Boolean.TRUE;
+import java.sql.*;
+import java.sql.ResultSet;
+import java.util.*;
+public class Practice1 {
+    public static void main(String[] args) {
+        try{
+            //loading and registering driver
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            //connecting to oracle db
+            Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","System","admin");
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select * from employ");
+            System.out.println("EID\tNAME\tJOB\tSALARY");
+            System.out.println("------\t--------\t-------\t------");
+            //moving cursor to next record
+            while(rs.next()==TRUE){
+                //getting column values from current row
+                System.out.println(rs.getInt(1)+"\t"+rs.getString(2)+"\t"+rs.getString(3)+"\t"+rs.getDouble(4));
+            }
+            rs.close();
+            con.close();
+        }
+            catch(ClassNotFoundException|SQLException e){
+                
+                   System.out.println(e); 
+                    }
+    }
+}
+
+//Deletion operation 
+import java.sql.*;
+import java.util.*;
+public class Practice3 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        try{
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","SYSTEM","system");
+            Statement st = con.createStatement();
+            ResultSet rs;
+            System.out.println("Enter employ id to delete ");
+            int id = sc.nextInt();
+            rs = st.executeQuery("select * from employ where EID="+id);
+            if(rs.next()){
+                int vid = rs.getInt(1);
+                String vna=rs.getString(2);
+                String vjob = rs.getString(3);
+                double vsal = rs.getDouble(4);
+                System.out.println("Employ ID ="+vid+"\nEmploy Name="+vna+"\nEMployee Job ="+vjob+"\nEmployee Salary ="+vsal);
+                System.out.println("Do you want delete above details ?(y/n)");
+                String ch = sc.next();
+                ch=ch.toLowerCase();
+                if(ch.equals("y")){
+                  rs=st.executeQuery("Delete Employ where EID="+vid);
+                    System.out.println("Employ id deleted");
+                }else{
+                    System.out.println("Employ id could not be deleted");
+                }
+            }else{
+                System.out.println("Employ id not found");
+            }
+        }
+            catch(SQLException|ClassNotFoundException e){
+                    System.out.println(e);
+                    }
+        
+    }
+}

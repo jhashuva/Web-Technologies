@@ -1,0 +1,29 @@
+1. What is PHP? what PHP can do ?
+2. Write about declaring varibles in PHP with example
+3. How many ways a string literal can be specified with an example
+4. Write about creating object in PHP with example
+5. Write a simple syntax of PHP that includes instruction separation and comments
+6. Write about NULL varible in PHP with example
+7. Write a syntax for declaring array in PHP 
+8. Write about string operators in PHP with example
+9. Write about userdefined functions in PHP and write a simple function that takes integer as a varible and return the true if it is even return false otherwise
+10.Write about the PHP supported data types
+
+-------------------------------------------------------------------------------------------
+
+1. write about control structures in PHP and write simple PHP code that prints sequence below
+  
+   1
+   2 2
+   3 3 3
+   4 4 4 4
+
+2. write about arrays concept in PHP with syntax and example
+3. Write a PHP code that reads data from HTML and prints
+4. what are the different file operations performed by PHP ? write the functions in detail
+5. What are the different functions to sort the arrays with examp;e
+6. Write about the procedure to connect MYSQL database with PHP and write an example
+7. Write a PHP code to insert simple query into database table with simple example
+8. Write a PHP code to retrive the reults from database and print
+9. What is the procedure of creating, reading and writing file in PHP with an example
+10. What is the difference between for loop, while and do..while loop with examples. 

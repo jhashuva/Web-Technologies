@@ -1,0 +1,14 @@
+<html>
+<head>
+<script type="text/javascript">
+var a=window.prompt("enter a number");
+if(a%2==0&&a!=0)
+alert("even");
+else if(a%2!=0) 
+alert("odd");
+else
+alert("u r input is 0");
+</script>
+</head>
+</body>
+</html>

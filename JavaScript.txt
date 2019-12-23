@@ -1,0 +1,24 @@
+1.what is javascript ? what can javascript do?
+2. How to create object in javascript ? write an example.
+3.write advantages and applications of javascript
+4. What is the reason for declaring comments in programming Language.What are the different ways to declaring comments in javascript with examples
+5. Write the procedure for inserting javascript in html with an example
+6. What javascript can do for HTML ?
+7. Write a simple javascript that will displays the message "Hello World" by using window.alert() method 
+8. What is 'keyword' in Programming Langugae ? Write about few kewords in Javascript
+9. What is varible ? what is the purpose of varible ? How can varibles declared and assigned in javascript with example
+10. What is operator precedence in arthematic expression ? List the operators from highest to lowest precedence
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+1. Write about How events are handled by Javascript 
+2. Write the validation page using javascript
+3. Write a Javascript that reads an integer and checks whether it is palindrome or not
+4. Write about Javascript dialog boxes and their usage of each one with example
+5. Write a Javascript which accepts a number as a input and displays whether it is even or odd
+6. Write about varible scope in javascript.
+7. Write about constraint validation DOM methods and constraint validation DOM Properties in javascript with example
+8. What are the HTML events, what javascript can do for those events? Write a simple javascript that can dispaly date by using 'onclick' event.
+9. What is the DOM ? Write about HTML DOMS
+10. Write a HTML form and javascript to validate HTML form which consists of Student Name, Roll Number, Blood Group, Email ID, Phone Number.
+
+

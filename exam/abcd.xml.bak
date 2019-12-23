@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<!DOCTYPE employee1 SYSTEM "employee1.dtd">
+<employee1>
+<empid>1</empid>
+<name>abcd</name>
+<salary>20000</salary>
+</employee1>

@@ -1,0 +1,4 @@
+<!element employee(empid,name,salary)>
+<!element empid(#PCDATA)
+<!element name(#PCDATA)
+<!element salary(#PCDATA)

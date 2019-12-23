@@ -1,0 +1,144 @@
+44. LISTING THE DATABASES
+
+----------------------------------------------------------------------------------------------------
+<?php
+// Usage without mysql_list_dbs()
+$link = mysql_connect('localhost', 'root', '');
+$res = mysql_query("SHOW DATABASES");
+
+while ($row = mysql_fetch_assoc($res)) {
+    echo $row['Database'] . "<br>";
+}
+?>
+
+
+
+45. CREATING THE DATABASE
+
+--------------------------------------------------------------------------------------------------------
+<?php
+$connection = mysql_connect("localhost","root","");
+if(!$connection){
+die('could  not connect'.mysql_error());
+}else{
+echo "connected to mysql successfully <br>";
+$query = mysql_query("CREATE DATABASE mydatabase", $connection);
+if(!$query){
+    echo "sorry database could not created<br>";
+}
+echo "database created succesfully";
+}
+mysql_close($connection);
+?>
+
+
+46. CONNECTING THE DATABASE
+----------------------------------------------------------------------------------------------------------------
+<?php
+
+$connection = mysql_connect("localhost","root","");
+if(!$connection){
+die('could  not connect'.mysql_error());
+}else{
+echo "connected to mysql successfully <br>";
+$db =  mysql_select_db("mydatabase", $connection);
+if(!$db){
+    echo "sorry database could not find<br>";
+}
+echo "database connected succesfully";
+}
+mysql_close($connection);
+?>
+
+
+
+
+47. LISTING THE TABLES
+------------------------------------------------------------------------------------------------------------------------
+<?php
+$dbname = 'mydatabase';
+
+if (!mysql_connect('localhost', 'root', '')) {
+    echo 'Could not connect to mysql';
+    exit;
+}
+
+$sql = "SHOW TABLES FROM $dbname";
+$result = mysql_query($sql);
+
+if (!$result) {
+    echo "DB Error, could not list tables\n";
+    echo 'MySQL Error: ' . mysql_error();
+    exit;
+}
+
+while ($row = mysql_fetch_row($result)) {
+    echo "Table: {$row[0]}<br>";
+}
+
+mysql_free_result($result);
+?>
+
+48. CREATING TABLE
+-------------------------------------------------------------------------------------------------------------------------
+<?php
+$connection = mysql_connect("localhost","root","");
+if(!$connection){
+die('could  not connect'.mysql_error());
+}else{
+echo "connected to mysql successfully <br>";
+$db = mysql_select_db("mydatabase", $connection);
+if(!$db){
+    echo "database could not be connected";
+}
+$query = mysql_query("CREATE TABLE employ (id int(4), name varchar(20), designation varchar(20), salary int(10))", $connection);
+if(!$query){
+    echo "query could not be executed";
+}else{
+echo "table created";
+}
+}
+mysql_close($connection);
+?>
+
+
+49. ALTERING THE TABLE
+-------------------------------------------------------------------------------------------------------------------------
+<?php
+$connection = mysql_connect("localhost","root","");
+if(!$connection){
+die('could  not connect'.mysql_error());
+}else{
+echo "connected to mysql successfully <br>";
+$db = mysql_select_db("mydatabase", $connection);
+if(!$db){
+    echo "database could not be connected";
+}
+$query = mysql_query("ALTER TABLE employ add column email varchar(30) ", $connection);
+if(!$query){
+    echo "table can't be altered";
+}else{
+echo "table altered succesfully";
+}
+}
+mysql_close($connection);
+?>
+ 
+
+50. DELETING DATABASE
+--------------------------------------------------------------------------------------------------------------
+<?php
+$connection = mysql_connect("localhost","root","");
+if(!$connection){
+die('could  not connect'.mysql_error());
+}else{
+echo "connected to mysql successfully <br>";
+$query = mysql_query("DROP database mydatabase ", $connection);
+if(!$query){
+    echo "Database can't be deleted";
+}else{
+echo "database deleted succesfully";
+}
+}
+mysql_close($connection);
+?>

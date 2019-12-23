@@ -1,0 +1,139 @@
+JAPP - 5
+
+index.html
+--------------------------------------------------
+<html>
+    <head>
+        <title>FORM</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form action="./serv1" method="post"><br><br><br><br><br><center>
+            <div><table border="1px"><tr><td>NAME</td><td>&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="una"></td></tr>
+                    <tr><td>ROLL NUMBER</td><td style="alignment-baseline: central;">&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="rnum"></td></tr>
+<tr><td> GENDER :</td><td><input type="radio" name="gender" value="male"> MALE
+ <input type="radio" name="gender" value="female"> FEMALE
+<input type="radio" name="gender" value="other"> OTHER</td></tr>
+<tr><td>PREFERENCES</td> <td>
+<input type="checkbox" name="pref" value=" hyd">HYD
+<input type="checkbox" name="pref" value="ben">BENGULUR
+<input type="checkbox" name="pref" value="pune">PUNE
+        <input type="checkbox" name="pref" value="che">CHENNAI</td></tr>
+ <tr><td>PHONE NUMBER</td><td>&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="phone"></td></tr>
+                    <tr><td>EMAIL</td><td>&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="email"></td></tr>
+                    <tr><td>ADDRESS</td><td>&nbsp;&nbsp;&nbsp;&nbsp; <textarea name="ta" rows="5"></textarea></td></tr>
+                    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp; <input type="submit" name="submit" value="submit"></td>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" name="reset" value="reset"></td></tr></table>
+            </div></center>
+        </form>
+    </body>
+</html>
+
+
+
+
+Serv1.java
+--------------------------------------------------
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ *
+ * @author JOE
+ */
+public class serv1 extends HttpServlet {
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    public void doPost (HttpServletRequest requst,HttpServletResponse response) throws IOException,ServletException{
+        response.setContentType("text/html");
+        String una = requst.getParameter("una");
+        String rnum = requst.getParameter("rnum");
+        String gender = requst.getParameter("gender");
+        String pref[] = requst.getParameterValues("pref");
+        String phone = requst.getParameter("phone");
+        String email = requst.getParameter("email");
+        String address = requst.getParameter("ta");
+        PrintWriter out = response.getWriter();
+        out.println("<html>");
+        out.println("<head>");
+        out.println("<title> Your Data</title>");
+        out.println("</head>");
+        out.println("<body>");
+        out.println("<center>");
+        out.println("<table border='1px'>");
+        out.println("<tr>");
+        out.println("<th>NAME :</th>");
+        out.println("<td>"+una+"</td>");
+        out.println("</tr>");
+        out.println("<tr>");
+        out.println("<th>ROLL NUMBER :</th>");
+        out.println("<td>"+rnum+"</td>");
+        out.println("</tr>");
+        out.println("<tr>");
+        out.println("<th>Gender :</th>");
+        out.println("<td>"+gender+"</td>");
+        out.println("</tr>");
+        out.println("<tr>");
+        out.println("<th>Prefrences :</th>");
+        out.println("<td>");
+        for (String cn: pref) {
+            out.println(cn+"&nbsp;&nbsp;");
+        }
+        out.println("</td>");
+        out.println("</tr>");
+        out.println("<tr>");
+        out.println("<th>Phone Number :</th>");
+        out.println("<td>"+phone+"</td>");
+        out.println("</tr>");
+        out.println("<tr>");
+        out.println("<th>Email :</th>");
+        out.println("<td>"+email+"</td>");
+        out.println("</tr>");
+        out.println("<tr>");
+        out.println("<th>Address :</th>");
+        out.println("<td>"+address+"</td>");
+        out.println("</tr>");
+        out.println("</form>");
+        out.println("</table");
+        out.println("</center>");
+       // out.println("<a href='./serv2.java'>serv2</a>");
+        out.println("</body>");
+       // requst.getRequestDispatcher("./serv2").forward(requst, response);
+    }
+
+}
+
+
+
+web.xml
+--------------------------------------------------
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <servlet>
+        <servlet-name>Serv1</servlet-name>
+        <servlet-class>serv1</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Serv1</servlet-name>
+        <url-pattern>/serv1</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>

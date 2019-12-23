@@ -1,0 +1,69 @@
+//creating table books with attributes bookid, title, AuthorName, Price by using execute method.
+import java.sql.Connection;//importing the connection interface from sql statement
+import java.sql.DriverManager;//importing the DriverManager interface from sql statement
+import java.sql.SQLException;//importing the sql exception interface
+import java.sql.Statement;
+public class ExampleOnStatment {
+    public static void main(String[] args) {
+        try{
+        Class.forName("oracle.jdbc.driver.OracleDriver");//registring the class driver
+        Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","System","admin");//creating connection object by using DriverManager interface
+        Statement st = con.createStatement();//creating statement object
+        String s = "insert into ";
+        boolean a=st.execute(s);
+        if(a==false){
+            System.out.println("Table Created");
+        }else{
+            System.out.println("Table not created");
+        }
+        con.close();
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        
+    }
+}
+
+
+//inserting records in the books table
+
+import java.sql.Connection;//importing the connection interface from sql statement
+import java.sql.DriverManager;//importing the DriverManager interface from sql statement
+import java.sql.SQLException;//importing the sql exception interface
+import java.sql.Statement;
+import java.util.Scanner;
+import java.sql.PreparedStatement;
+public class InsertRecords {
+public static void main(String[] args) {
+ try{
+Class.forName("oracle.jdbc.driver.OracleDriver");//registring the class driver
+Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","System","admin");//creating connection object by using DriverManager interface
+ Statement st = con.createStatement();//creating statement object
+Scanner scan = new Scanner(System.in);
+System.out.println("Enter how many records to insert");
+int a = scan.nextInt();
+int i =0;
+while(i<a){
+ PreparedStatement ps = con.prepareStatement("insert into books values(?,?,?,?)");
+ System.out.println("Enter Book id");
+ String bid = scan.next();
+ ps.setString(1,bid);
+System.out.println("Enter Title");
+ String title = scan.next();
+ ps.setString(2,title);
+System.out.println("Enter Author Name");
+ String author = scan.next();
+ ps.setString(3,author);
+System.out.println("Enter Book Price");
+ String price = scan.next();
+ ps.setString(4,price);
+i++;
+ps.execute();
+}
+con.close();
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        
+    }
+}
